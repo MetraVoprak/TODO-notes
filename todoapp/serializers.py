@@ -1,6 +1,6 @@
-from rest_framework.serializers import ModelSerializer, HyperlinkedIdentityField, HyperlinkedRelatedField
-from .models import Project
-from .models import ToDo
+from rest_framework.serializers import HyperlinkedIdentityField, HyperlinkedRelatedField, ModelSerializer
+
+from .models import Project, ToDo
 
 
 class ProjectSerializer(ModelSerializer):
@@ -12,7 +12,7 @@ class ProjectSerializer(ModelSerializer):
 
     class Meta:
         model = Project
-        fields = '__all__'
+        fields = "__all__"
 
 
 class ToDoSerializer(ModelSerializer):
@@ -21,4 +21,4 @@ class ToDoSerializer(ModelSerializer):
 
     class Meta:
         model = ToDo
-        exclude = ('is_active',)
+        exclude = ("is_active",)
