@@ -9,3 +9,9 @@ class User(models.Model):
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
     email = models.EmailField(unique=True)
+
+
+# super_user 
+# login - tema
+# password - 123456789
+# email - tema@tema.com

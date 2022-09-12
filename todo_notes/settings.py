@@ -50,10 +50,11 @@ INSTALLED_APPS = [
     "userapp",
     "todoapp",
     # other
-    "django_extensions",
     "rest_framework",
-    "django_filters",
     "corsheaders",
+    "django_filters",
+    "rest_framework.authtoken",
+    "rest_framework_simplejwt.token_blacklist",
 ]
 
 MIDDLEWARE = [
