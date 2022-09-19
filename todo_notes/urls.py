@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -25,10 +25,28 @@ from rest_framework_simplejwt.views import (
 from todoapp.views import ToDoViewSet, ProjectViewSet
 from userapp.views import UserViewSet
 
+from rest_framework import permissions
+
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
 router = DefaultRouter()
 router.register('users', UserViewSet)
 router.register('todos', ToDoViewSet)
 router.register('projects', ProjectViewSet)
+
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="ToDo",
+        default_version='0.1',
+        description="Documentation to out project",
+        contact=openapi.Contact(email="suppoer@pleshakov.org"),
+        license=openapi.License(name="MIT License"),
+    ),
+    public=True,
+    permission_classes=[permissions.AllowAny],
+ )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
